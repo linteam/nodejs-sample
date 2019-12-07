@@ -25,6 +25,7 @@ router.post("/", [auth], async (req, res) => {
   const movie = new Movie({
     title: req.body.title,
     genre: {
+      //tum genre'yi buraya vermek yerine hybrid yaklasimla bir kismini burada tutuyoruz
       _id: genre._id,
       name: genre.name
     },

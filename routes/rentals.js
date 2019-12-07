@@ -12,7 +12,7 @@ Fawn.init(mongoose);
 router.get("/", auth, async (req, res) => {
   const rentals = await Rental.find()
     .select("-__v")
-    .sort("-dateOut");
+    .sort("-dateOut"); //desc order
   res.send(rentals);
 });
 
