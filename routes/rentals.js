@@ -7,7 +7,7 @@ const Fawn = require("fawn");
 const express = require("express");
 const router = express.Router();
 
-Fawn.init(mongoose);
+Fawn.init(mongoose); //Transaction kutuphanesini ilklendirdik
 
 router.get("/", auth, async (req, res) => {
   const rentals = await Rental.find()
@@ -42,6 +42,12 @@ router.post("/", auth, async (req, res) => {
     }
   });
 
+  //--- TRANSACTIONS ---
+  // Birlikte tamamlanmasi gereken isler butunu, bu islerden biri gerceklesmezse digerleri roll-back olsun isteriz.
+  //Burada rental save ve movie save'in ikisinin de olmasini istedigimiz gibi
+
+  //mongo'da bu yok bunun yerine "two phase commits" denen bir teknik kullanilabilir.
+  //Fawn npm package'i altta 2 phase commits kullanir, transaction'i simule eder.
   try {
     new Fawn.Task()
       .save("rentals", rental)
@@ -56,6 +62,7 @@ router.post("/", auth, async (req, res) => {
 
     res.send(rental);
   } catch (ex) {
+    //500 Internal Server Error
     res.status(500).send("Something failed.");
   }
 });
