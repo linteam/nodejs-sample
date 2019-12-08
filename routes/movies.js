@@ -33,9 +33,8 @@ router.post("/", [auth], async (req, res) => {
     dailyRentalRate: req.body.dailyRentalRate,
     publishDate: moment().toJSON()
   });
-  await movie.save();
-
-  res.send(movie);
+  await movie.save(); //id save'den once mongo driver tarafindan set edildigi icin
+  res.send(movie); //yukaridaki movie degerini direkt donebiliriz.
 });
 
 router.put("/:id", [auth], async (req, res) => {
