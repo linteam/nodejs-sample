@@ -1,4 +1,8 @@
-const config = require("config");
+const config = require("config"); //Config paketi
+/*default.json app settings'leri koydugumuz dosya*/
+/*custom-environment-variables.json app settings ile env variables arasindaki mapping yapilir.
+Mapping yapilirken env vars basina uygulama ismi konulur best practice olarak karismasin deyu*/
+
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const mongoose = require("mongoose");
@@ -39,7 +43,8 @@ userSchema.methods.generateAuthToken = function() {
       email: this.email,
       isAdmin: this.isAdmin
     },
-    config.get("jwtPrivateKey")
+    config.get("jwtPrivateKey") //get metodu ile default.json'dan dosyalar cekilir.
+    //gercek secret env var'da tutulmali.
   );
   return token;
 };

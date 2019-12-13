@@ -1,6 +1,6 @@
 const winston = require("winston");
 const express = require("express");
-const config = require("config");
+const config = require("config"); //burda tanimliyoruz.
 const app = express();
 
 require("./startup/logging")();
