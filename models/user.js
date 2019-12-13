@@ -15,17 +15,22 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 5,
     maxlength: 255,
-    unique: true
+    unique: true //e-posta adresinin unique olmasi onemli
   },
   password: {
     type: String,
     required: true,
     minlength: 5,
-    maxlength: 1024
+    maxlength: 1024 //hash'ini tutariz
+    //joi-password-complexity
   },
   isAdmin: Boolean
 });
 
+//JSON Web Token - JWT
+//Client tarafinda local storage'da tutabilirsin
+//jwt.io ile inceleyebilir, JWT string'i 3 parcadan olusur.
+//Header (alg, typ); Payload (public sik kullanilacak veriler icerir); Signature
 userSchema.methods.generateAuthToken = function() {
   const token = jwt.sign(
     {
