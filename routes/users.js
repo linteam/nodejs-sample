@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 
   const token = user.generateAuthToken();
   res
-    .header("x-auth-token", token)
+    .header("x-auth-token", token) //Uye olan ayrica login olmasin diye header'a token veriyoruz.
     .header("access-control-expose-headers", "x-auth-token") //Client x-auth-token'i okuyabilsin diye ekledik
     .send(_.pick(user, ["_id", "name", "email"])); //password ve __v gitmiyor
 });
