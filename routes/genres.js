@@ -7,10 +7,16 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const genres = await Genre.find()
-    .select("-__v")
-    .sort("name"); //isme gore sirala
-  res.send(genres);
+  try {
+    //await kullaniminda try catch blogu unutulmamalidir.
+    const genres = await Genre.find()
+      .select("-__v")
+      .sort("name"); //isme gore sirala
+    res.send(genres);
+  } catch (error) {
+    //500 - Internal Error
+    res.status(500).send("Something failed");
+  }
 });
 
 router.post("/", auth, async (req, res) => {
