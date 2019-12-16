@@ -14,6 +14,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", auth, async (req, res) => {
+  //Her istek oncesi yetki kontrolu yerine middleware fonksiyonda hepsi icin cozum olur.
+  //Bu fonksiyonun 2. parametresi middleware function auth
+  //const token = req.header("x-auth-token");
+  //res.status(401).send(""); //401 Client does not have credentials
+
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 

@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
+//middleware auth method
+//next ile bir sonraki middleware fonksiyonuna geciyor.
 module.exports = function(req, res, next) {
   if (!config.get("requiresAuth")) return next();
 
@@ -9,9 +11,9 @@ module.exports = function(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
-    req.user = decoded;
+    req.user = decoded; //JWT'yi encode ederken koydugumuz JSON
     next();
   } catch (ex) {
-    res.status(400).send("Invalid token.");
+    res.status(400).send("Access denied. Invalid token.");
   }
 };
