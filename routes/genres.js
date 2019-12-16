@@ -6,20 +6,11 @@ const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", async (req, res, next) => {
-  try {
-    //await kullaniminda try catch blogu unutulmamalidir.
-    const genres = await Genre.find()
-      .select("-__v")
-      .sort("name"); //isme gore sirala
-    res.send(genres);
-  } catch (error) {
-    next(error);
-    //Bu islemleri bir yerde idare icin middleware'in sonuna ekledigim error'da hallediyorum.
-    //500 - Internal Error
-    //res.status(500).send("Something failed");
-    //Log the exception
-  }
+router.get("/", async (req, res) => {
+  const genres = await Genre.find()
+    .select("-__v")
+    .sort("name"); //isme gore sirala
+  res.send(genres);
 });
 
 router.post("/", auth, async (req, res) => {
