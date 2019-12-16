@@ -46,6 +46,7 @@ router.put("/:id", [auth, validateObjectId], async (req, res) => {
   res.send(genre);
 });
 
+//Birden fazla middleware fonksiyonu gecireceksen array halinde vermelisin.
 router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
   const genre = await Genre.findByIdAndRemove(req.params.id);
 

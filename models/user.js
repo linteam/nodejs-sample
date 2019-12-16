@@ -28,7 +28,15 @@ const userSchema = new mongoovidly_jwtPrivateKeyse.Schema({
     maxlength: 1024 //hash'ini tutariz
     //joi-password-complexity
   },
-  isAdmin: Boolean
+  isAdmin: Boolean //Role based authorization
+  //Gercek uygulamada asagidaki gibi daha kompleks roller olacaktir
+  //Daha kompleks uygulamalarda roller yerine operasyonlara yetki vermek mantikli
+  /*operations: {
+    adminPanel: Boolean,
+    addQuestion: Boolean,
+    solveExam: Boolean
+  }*/
+  //Sonuc olarak middleware'de roles array ya da operations array islenir.
 });
 
 //JSON Web Token - JWT
@@ -41,7 +49,7 @@ userSchema.methods.generateAuthToken = function() {
       _id: this._id,
       name: this.name,
       email: this.email,
-      isAdmin: this.isAdmin
+      isAdmin: this.isAdmin //JWT'ye eklemek yararli
     },
     config.get("jwtPrivateKey") //get metodu ile default.json'dan dosyalar cekilir.
     //gercek secret env var'da tutulmali.
