@@ -5,11 +5,16 @@ const { User, validate } = require("../models/user");
 const express = require("express");
 const router = express.Router();
 
+//Get current user
+//me yerine id yaparsak baskalarini gorme acigi olabilir.
 router.get("/me", auth, async (req, res) => {
+  //req.user._id auth icinde cozulen JWT'dan geliyor.
+  //user'i orda set etmistik cunku.
   const user = await User.findById(req.user._id).select("-password");
   res.send(user);
 });
 
+//Create a User
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
