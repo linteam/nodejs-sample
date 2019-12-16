@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
+//user login
+//logout should be implemented on client by deleting token
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
