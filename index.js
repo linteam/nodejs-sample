@@ -3,7 +3,7 @@ const express = require("express");
 const config = require("config"); //burda tanimliyoruz.
 const app = express();
 
-require("./startup/logging")();
+require("./startup/logging")(); //logging icinde express-async-errors yukleniyor. Bununla async icinde hata yakalanirsa middleware'e iletiliyor.
 require("./startup/cors")(app);
 require("./startup/routes")(app);
 require("./startup/db")();

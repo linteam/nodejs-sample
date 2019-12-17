@@ -1,4 +1,7 @@
 const winston = require("winston");
+//Winston loglama paketi ile console, file ve http kanallarindan loglar basilabilir.
+//Eklentilerle mongodb, couchdb, redis gibi database'lere yazabilir.
+// Ya da logly gibi enterprise servislerine yazabilir.
 // require('winston-mongodb');
 //express-async-errors paketi ile  express async fonksiyonu asagidaki sekilde sarmallanabilir.
 require("express-async-errors");

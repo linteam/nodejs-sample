@@ -4,7 +4,8 @@ const winston = require("winston");
 //NODEJS de bunun icin error middleware'i kullanilabilir.
 //Ilk parametre olarak alinan her hangi bir hata err olarak alinir.
 module.exports = function(err, req, res, next) {
-  winston.error(err.message, err);
+  winston.error(err.message, err); //uygulamada hata firlatildiginda winston ile loglanmasini sagliyorum.
+  //oncesinde logging'le winston ayarlarini yaptim.
 
   // error
   // warn
