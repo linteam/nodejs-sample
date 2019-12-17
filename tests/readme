@@ -1,0 +1,18 @@
+---- TEST CESITLERI ----
+unit test - tests a unit of an application without its external dependencies
+integration test - tests a behaviour with its external dependencies
+end to end test - drives an application through its interface
+    guzel ama cok yavas
+    UI degisti mi degistirmek gerekir.
+    Bunun icin tool'lar var: Selenium
+
+---- TERCIH YONTEMI ----
+Testlerimizin cogu unit test olmali, confidence icin biraz integration en az da e2e kullaniriz.
+E2E ile happy path test edilmeli uç noktalar unit test'e bırakılmalı.
+
+---- TOOLING ----
+Jasmin
+Mocha
+    Yanında kullanılan meshur pluginler, chai ve sinon
+Jest  (Kullanacagız)
+    Jasmin wrapper, facebook React app'leri test icin kullanıyor.
