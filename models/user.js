@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const userSchema = new mongoovidly_jwtPrivateKeyse.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,

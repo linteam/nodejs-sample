@@ -8,6 +8,7 @@ const auth = require("../routes/auth");
 const returns = require("../routes/returns");
 const error = require("../middleware/error");
 
+//Tum routes ve middlewares burda eklenir.
 module.exports = function(app) {
   app.use(express.json());
   app.use("/api/genres", genres);
