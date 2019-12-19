@@ -57,6 +57,10 @@ router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
 });
 
 router.get("/:id", validateObjectId, async (req, res) => {
+  //Bu kontrol exception'a dusup 500 donmemesi icin onemli
+  //validateObjectID olarak middleware'e tasindi. Yukarida parametre olarak verildi.
+  //if(!mongoose.Types.ObjectId.isValid(req.params.id))
+  //  return res.status(404).send("Invalid ID");
   const genre = await Genre.findById(req.params.id).select("-__v"); //-__v ile mongodan gelen v degerini cikarmis oluruz.
 
   if (!genre)
