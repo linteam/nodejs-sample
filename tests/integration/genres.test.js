@@ -97,13 +97,13 @@ describe("/api/genres", () => {
     });
 
     it("should return 400 if genre is more than 50 characters", async () => {
-      name = new Array(52).join("a");
+      name = new Array(52).join("a"); //51 adet a dizisi olusturur.
 
       const res = await exec();
 
       expect(res.status).toBe(400);
     });
-
+    //Veritabanina kaydoldugunu kontrol ediyoruz.
     it("should save the genre if it is valid", async () => {
       await exec();
 
@@ -111,7 +111,7 @@ describe("/api/genres", () => {
 
       expect(genre).not.toBeNull();
     });
-
+    //Sunucudan genre'yi dondugunu kontrol ediyoruz.
     it("should return the genre if it is valid", async () => {
       const res = await exec();
 
