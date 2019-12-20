@@ -8,6 +8,7 @@ module.exports = function(req, res, next) {
 
   const token = req.header("x-auth-token");
   if (!token) return res.status(401).send("Access denied. No token provided.");
+  //Token client'ta null verilmisse string'e cevrilir ve burdan gecer 400 doner.
 
   try {
     const decoded = jwt.verify(token, config.get("jwtPrivateKey"));

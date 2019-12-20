@@ -1,10 +1,11 @@
 const { User } = require("../../models/user");
 const { Genre } = require("../../models/genre");
-const request = require("supertest");
+const request = require("supertest"); //request gondermek icin.
 
 describe("auth middleware", () => {
   beforeEach(() => {
     server = require("../../index");
+    token = new User().generateAuthToken();
   });
   afterEach(async () => {
     await Genre.remove({});
@@ -12,17 +13,14 @@ describe("auth middleware", () => {
   });
 
   let token;
-
+  //Happy path'i yaziyorum. Olumsuz alternatifleri tanimlandigim genel degiskenleri
+  //degistirerek veriyorum.
   const exec = () => {
     return request(server)
-      .post("/api/genres")
+      .post("/api/genres") //istekleri genres'a yapiyoruz ama auth middleware'den gelecek cevaplar.
       .set("x-auth-token", token)
       .send({ name: "genre1" });
   };
-
-  beforeEach(() => {
-    token = new User().generateAuthToken();
-  });
 
   it("should return 401 if no token is provided", async () => {
     token = "";
