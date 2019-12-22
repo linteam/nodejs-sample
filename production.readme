@@ -22,3 +22,13 @@ heroku create
 //git remote -v     ile remote listesini gorursun
 
 git push heroku master
+
+//ENVIRONMENT VARIABLES
+heroku config:set vidly_jwtPrivateKey=1234
+heroku config:set NODE_ENV=production
+
+heroku config       komutu ile tanimlanan env'leri gorebilirsin
+
+Heroku dyno isimli sunucu(lar)dan olusur, veri saklamaz, sadece env var'lari paylasirlar.
+10 dyno icin bir kere env var tanimlasan yeter, her oku replicate them.
+
