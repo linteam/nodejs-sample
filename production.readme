@@ -1,0 +1,10 @@
+npm i helmet
+npm i compression //HTTP isteklerini sıkıştırmak için
+
+bunlari middleware'e ekledik.
+heroku'da hesap actik.
+
+heroku -v komutu ile cli versiyonuna bakabiliriz.
+heroku login
+    proxy varsa -> export HTTP_PROXY=komutu ile proxy adresini vermelisiniz.
+git push heroku master
