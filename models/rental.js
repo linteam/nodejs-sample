@@ -57,14 +57,15 @@ const rentalSchema = new mongoose.Schema({
     min: 0
   }
 });
-
+//Static metot ekleme
 rentalSchema.statics.lookup = function(customerId, movieId) {
   return this.findOne({
+    //this oldugu icin arrow func kullanamam burda
     "customer._id": customerId,
     "movie._id": movieId
   });
 };
-
+//Instance metot ekleme - Rental Fee hesaplayan metot
 rentalSchema.methods.return = function() {
   this.dateReturned = new Date();
 

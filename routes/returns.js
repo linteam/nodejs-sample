@@ -7,11 +7,13 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/", [auth, validate(validateReturn)], async (req, res) => {
+  //verilen customerId ve movieId ile eslesen rental sorgulaniyor.
   const rental = await Rental.lookup(req.body.customerId, req.body.movieId);
-
+  //Eger rental yoksa 404 not found donuluyor.
   if (!rental) return res.status(404).send("Rental not found.");
 
   if (rental.dateReturned)
+    //eger rental iade edilmisse 400 don
     return res.status(400).send("Return already processed.");
 
   rental.return();

@@ -16,3 +16,8 @@ Mocha
     Yanında kullanılan meshur pluginler, chai ve sinon
 Jest  (Kullanacagız)
     Jasmin wrapper, facebook React app'leri test icin kullanıyor.
+
+-----
+Jest ile yazdığın testler kodun ne kadarını kapsıyor görebilirsin.
+json içindeki script böyle olmalı.. "test": "jest --watchAll --verbose --coverage"
+npm test deyince coverage diye dosya oluşturuyor html rapor var içinde
