@@ -7,4 +7,18 @@ heroku'da hesap actik.
 heroku -v komutu ile cli versiyonuna bakabiliriz.
 heroku login
     proxy varsa -> export HTTP_PROXY=komutu ile proxy adresini vermelisiniz.
+
+
+heroku uygulamayi npm start scripti ile baslatir. Bunun ("start": "node index.js",) scriptlerde oldugundan emin olun.
+Production icin nodemon kullanmayiz.
+
+json'a node versiyonu da eklenmeli. 
+ "engines": {
+    "node": "10.17.0"
+  },
+
+heroku create
+//heroku git:remote -a learn-nodejs-2019
+//git remote -v     ile remote listesini gorursun
+
 git push heroku master

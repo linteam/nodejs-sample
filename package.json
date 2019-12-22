@@ -8,6 +8,9 @@
     "seed": "node seed.js",
     "test": "jest --watchAll --verbose --coverage"
   },
+  "engines": {
+    "node": "10.17.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
